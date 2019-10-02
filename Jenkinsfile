@@ -1,30 +1,16 @@
-def agent_label
-if (BRANCH_NAME == "dev") {
-    agentLabel = "dev_node"
-} else {
-    agentLabel = "test_node"
-}
-
 pipeline {
-    agent { label agent_label }        
-stage('build') {
+    agent {test_node}
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
             when {
                 branch 'master'
             }
-            
             steps {
-              script{
-                ls
-              }
+                sh 'ls'
             }
         }
-        when {
-                branch 'dev'
-            }
-            steps {
-                 script{
-                ls
-              }
-            }
-        
+    }
 }
