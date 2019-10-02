@@ -1,5 +1,5 @@
 pipeline {
-    agent {test_node}
+    agent { label test_node }
     environment {
         CI = 'true'
     }
