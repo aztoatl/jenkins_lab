@@ -12,10 +12,12 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Build') {
+        stage('Test') {
             when {branch 'master'}
             steps {sh 'ls'}
-            when{branch 'dev'}
+        }
+        stage('Dev') {
+            when {branch 'dev'}
             steps {sh 'ls'}
         }
     }
