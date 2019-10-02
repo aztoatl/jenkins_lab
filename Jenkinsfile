@@ -1,25 +1,20 @@
-pipeline {
-  agent any
-  stages {
-  stage('Stage 1') {
-      when {
-          branch 'master'
-          steps {
-            script {
-              echo 'Master'
+stage('build') {
+            when {
+                branch 'master'
             }
-          }
-      }
-      when {
-          branch 'dev'
-          steps {
-            script {
-              echo 'dev'
+            steps {
+              script{
+                echo 'Hi Master'
+              }
             }
-          }
-      }
-
-    }
-
-  }
-}
+        }
+        stage('build') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                 script{
+                echo 'Hi Dev'
+              }
+            }
+        }
